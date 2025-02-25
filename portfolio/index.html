@@ -13,7 +13,153 @@
 
         <title>Portfolio | Leydi Katherinne</title>
     </head>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    // 🟢 Variables del menú de navegación
+    const navMenu = document.querySelector(".nav__menu");
+    const navToggle = document.querySelector(".nav__toggle");
+    const navLinks = document.querySelectorAll(".nav__link");
+
+    // 🟢 Función para abrir/cerrar el menú en móviles
+    function toggleMenu() {
+        navMenu.style.right = (navMenu.style.right === "0px") ? "-100%" : "0px";
+    }
+
+    // Evento para abrir/cerrar menú
+    if (navToggle) {
+        navToggle.addEventListener("click", toggleMenu);
+    }
+
+    // Cerrar el menú al hacer clic en un enlace (solo en móviles)
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            if (window.innerWidth < 768) {
+                navMenu.style.right = "-100%";
+            }
+        });
+    });
+
+    // 🟢 Función para ajustar el diseño responsivo sin mover imágenes
+    function ajustarResponsivo() {
+        let homeSection = document.querySelector(".home");
+        let homeImg = document.querySelector(".home__img img");
+        let aboutImg = document.querySelector(".about__img img");
+        let projectImages = document.querySelectorAll(".project__images img");
+
+        if (window.innerWidth < 768) {
+            // 🔹 Mantener la estructura fija
+            homeSection.style.display = "flex";
+            homeSection.style.flexDirection = "column";
+            homeSection.style.alignItems = "center";
+            homeSection.style.justifyContent = "center";
+
+            // 🔹 Ajustar imagen del perfil sin cambiar de posición
+            homeImg.style.width = "200px"; 
+            homeImg.style.height = "200px";
+            homeImg.style.borderRadius = "50%"; 
+            homeImg.style.objectFit = "cover";
+            homeImg.style.margin = "10px auto";
+
+            // 🔹 Ajustar imagen de "Sobre Mí" sin que se mueva
+            aboutImg.style.width = "200px"; 
+            aboutImg.style.height = "200px";
+            aboutImg.style.borderRadius = "50%"; 
+            aboutImg.style.objectFit = "cover";
+            aboutImg.style.margin = "10px auto";
+
+            // 🔹 Ajustar imágenes de proyectos sin moverlas
+            projectImages.forEach(img => {
+                img.style.width = "100%";
+                img.style.height = "auto";
+                img.style.borderRadius = "10px";
+                img.style.objectFit = "cover";
+            });
+
+        } else {
+            // 🟢 Mantener estructura en pantallas grandes sin cambios bruscos
+            homeSection.style.display = "flex";
+            homeSection.style.flexDirection = "row";
+            homeSection.style.alignItems = "center";
+            homeSection.style.justifyContent = "space-between";
+
+            // 🔹 Ajuste de imágenes en pantallas grandes
+            homeImg.style.width = "350px";  
+            homeImg.style.height = "350px";
+            homeImg.style.borderRadius = "50%";
+            homeImg.style.marginLeft = "150px";
+
+            aboutImg.style.width = "300px";  
+            aboutImg.style.height = "300px";
+            aboutImg.style.marginLeft = "0px";
+
+            projectImages.forEach(img => {
+                img.style.width = "300px";  
+                img.style.height = "200px";
+                img.style.objectFit = "cover";
+            });
+        }
+    }
+
+    // 🟢 Función para evitar que los textos se desajusten
+    function ajustarTexto() {
+        let homeTitle = document.querySelector(".home__title");
+        let aboutTitle = document.querySelector(".about__subtitle");
+
+        if (window.innerWidth < 768) {
+            homeTitle.style.fontSize = "1.8rem";
+            aboutTitle.style.fontSize = "1.5rem";
+            homeTitle.style.textAlign = "center";
+        } else {
+            homeTitle.style.fontSize = "2.5rem";
+            aboutTitle.style.fontSize = "2rem";
+            homeTitle.style.textAlign = "left";
+        }
+    }
+
+    // 🟢 Función para hacer que el botón de "Descargar CV" sea más responsivo
+    function ajustarBotones() {
+        let botones = document.querySelectorAll(".button");
+
+        botones.forEach(btn => {
+            if (window.innerWidth < 768) {
+                btn.style.padding = "0.5rem 1.5rem";
+                btn.style.fontSize = "0.9rem";
+                btn.style.width = "100%";
+                btn.style.textAlign = "center";
+            } else {
+                btn.style.padding = "0.75rem 2.5rem";
+                btn.style.fontSize = "1rem";
+                btn.style.width = "auto";
+            }
+        });
+    }
+
+    // 🟢 Asegurar que la estructura del sitio no se mueva innecesariamente
+    function fijarEstructura() {
+        let mainContent = document.querySelector("main.l-main");
+        mainContent.style.width = "100%";
+        mainContent.style.maxWidth = "1200px";
+        mainContent.style.margin = "0 auto";
+    }
+
+    // 🟢 Función maestra que ajusta todo automáticamente sin mover las imágenes
+    function ajustesGenerales() {
+        ajustarResponsivo();
+        ajustarTexto();
+        ajustarBotones();
+        fijarEstructura();
+    }
+
+    // 🔥 Ejecutar los ajustes al cargar la página y al redimensionar
+    ajustesGenerales();
+    window.addEventListener("resize", ajustesGenerales);
+});
+
+
+
+    </script>
     <body>
+        
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">

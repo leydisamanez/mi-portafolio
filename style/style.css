@@ -1,97 +1,119 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-:root{
+:root {
     --background-color: #1e1e2e;
     --pink-color: #ff4f81;
     --secondary-color: #bbbbbb;
     --text-color: #ffffff;
 }
 
-*{
+* {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     background-color: var(--background-color) !important;
     color: var(--text-color);
 }
 
-h1,h2,h3,h4,h5,h6,p,span,td,a{
+h1, h2, h3, h4, h5, h6, p, span, td, a {
     cursor: pointer;
     color: var(--text-color);
 }
 
-canvas.particles-js-canvas-el{
-    position: absolute;
-    height: 100% !important;
+canvas.particles-js-canvas-el {
+    position: fixed;
     width: 100%;
+    height: 100%;
     top: 0;
-    right: 0;
     left: 0;
-    z-index: -10000;
-    margin: 0px;
+    z-index: -1;
 }
 
 /* Hero Section */
-.hero_section .row{
+.hero_section {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-}
-
-.hero_section .row h1,h2,h3,p{
-    color: var(--text-color);
-}
-
-.hero_section .row h3{
-    font-size: 19px;
-    font-weight: 30px;
-    margin-bottom: 15px;
-}
-
-.hero_section .row h3::after{
-    content: '';
-    position: absolute;
     text-align: center;
-    top: 10px;
-    width: 90px;
-    height: 2px;
-    background-color: var(--pink-color);
-    margin-left: 6px;
+    padding: 20px;
 }
 
-.hero_section .row h1{
+.hero_section .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero_section .row {
+    display: flex;
+    align-items: center;
+}
+
+.hero_section h1 {
     font-size: 65px;
     font-weight: 800;
 }
 
-.hero_section .row h2{
+.hero_section h2 {
     font-size: 20px;
-    font-weight: 100;
-    margin: 8px 0px;
+    font-weight: 400;
+    margin: 8px 0;
 }
 
-.hero_section .row p{
-    font-size: 13px;
+.hero_section h3 {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.hero_section h3::after {
+    content: '';
+    position: absolute;
+    text-align: center;
+    width: 90px;
+    height: 2px;
+    background-color: var(--pink-color);
+    margin-left: 6px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero_section p {
+    font-size: 14px;
     margin-top: 13px;
-    line-height: 21px;
+    line-height: 1.5;
     color: var(--secondary-color);
 }
 
 /* Botones */
-.hero_section .row button{
+.btn_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.hero_section button {
     border-radius: 10px;
     font-size: 19px;
     color: var(--text-color);
     background-color: var(--pink-color);
     border: 3px solid var(--pink-color);
-    width: 130px;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 10px;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
     transition: 0.3s ease-in-out;
 }
 
-.hero_section .row button:hover{
+.hero_section button:hover {
     background: white;
     color: var(--background-color);
     border-color: white;
@@ -99,73 +121,85 @@ canvas.particles-js-canvas-el{
 }
 
 /* Imagen de perfil */
-.hero_section .row img{
+.hero_section img {
     width: 80%;
+    max-width: 300px;
     border-radius: 50%;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
 }
 
 /* RESPONSIVE DESIGN */
-@media (max-width: 1200px) and (min-width: 993px){
-    .hero_section .row h1{
+@media (max-width: 1200px) {
+    .hero_section h1 {
         font-size: 58px;
     }
 }
 
-@media (max-width: 993px) and (min-width: 763px){
-    .hero_section .row h1 {
+@media (max-width: 993px) {
+    .hero_section .row {
+        flex-direction: column-reverse;
+    }
+    .hero_section h1 {
         font-size: 42px;
     }
-    .hero_section .row h2{
-        font-size: 15px;
+    .hero_section h2 {
+        font-size: 16px;
     }
-    .hero_section .row p{
-        font-size: 11px;
+    .hero_section p {
+        font-size: 12px;
     }
-    .hero_section .row h3{
-        font-size: 15px;
+    .btn_container {
+        flex-direction: column;
     }
-    .hero_section .row button{
-        font-size: 15px;
+    .hero_section img {
+        width: 60%;
+        margin-top: 20px;
     }
 }
 
-@media (max-width: 763px) and (min-width: 500px){
+@media (max-width: 768px) {
     .hero_section {
-        margin: 55px 0px;
+        height: auto;
+        padding: 50px 20px;
     }
-    .hero_section .row h1 {
-        font-size: 46px;
-        text-align: center;
+    .hero_section h1 {
+        font-size: 36px;
     }
-    .hero_section .row h2{
-        font-size: 15px;
-        text-align: center;
+    .hero_section h2 {
+        font-size: 14px;
     }
-    .hero_section .row p{
-        font-size: 11px;
-        text-align: center;
+    .hero_section p {
+        font-size: 12px;
     }
-    .hero_section .btn_container{
-        justify-content: center;
-        text-align: center;
-    }
-    .hero_section .row h3{
-        font-size: 18px;
-        text-align: center;
-        margin-bottom: 0px;
-    }
-    .hero_section .row h3::after{
+    .hero_section h3::after {
         width: 0px;
     }
-    .hero_section .btn_container button{
-        width: 100px;
-        height: 43px;
-        font-size: 15px;
-        text-align: center;
+    .hero_section img {
+        width: 50%;
     }
-    .hero_section img{
-        width: 60%;
-        margin-top: 20px;
+    .hero_section button {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero_section h1 {
+        font-size: 32px;
+    }
+    .hero_section h2 {
+        font-size: 14px;
+    }
+    .hero_section p {
+        font-size: 11px;
+    }
+    .hero_section img {
+        width: 50%;
+    }
+    .hero_section button {
+        width: 100px;
+        height: 35px;
+        font-size: 12px;
     }
 }
